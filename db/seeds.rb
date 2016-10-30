@@ -25,6 +25,13 @@ posts = Post.all
     )
 end
 
+Post.find_or_create_by(title: "New Unique Post") do |post|
+    post.body = "New Unique Post Body paragraph"
+end
+
+Comment.create_with(title: "New Unique Post").find_or_create_by(body: "random comments")
+
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+
