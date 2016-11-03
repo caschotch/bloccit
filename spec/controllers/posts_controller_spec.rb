@@ -14,7 +14,6 @@ RSpec.describe PostsController, type: :controller do
       get :index
       expect(assigns(:posts)).to eq([my_post])
     end
-    
   end
 
   describe "GET show" do
@@ -32,9 +31,6 @@ RSpec.describe PostsController, type: :controller do
       get :show, {id: my_post.id}
       expect(assigns(:post)).to eq(my_post)
     end
-  
-  
-  
   end
 
   describe "GET new" do

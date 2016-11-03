@@ -12,7 +12,6 @@ class PostsController < ApplicationController
   end
   
   def create
-    
     @post = Post.new
     @post.title = params[:post][:title]
     @post.body = params[:post][:body]
@@ -31,7 +30,6 @@ class PostsController < ApplicationController
   end
   
   def update
-    
     @post = Post.find(params[:id])
     @post.title = params[:post][:title]
     @post.body = params[:post][:body]
@@ -46,7 +44,6 @@ class PostsController < ApplicationController
   end
   
   def destroy
-    
     @post = Post.find(params[:id])
     
     if @post.destroy
@@ -56,10 +53,5 @@ class PostsController < ApplicationController
       flash.now[:alert] = "There was an error deleting the post."
       render :show
     end
-    
-    
   end
-  
-  
-  
 end
