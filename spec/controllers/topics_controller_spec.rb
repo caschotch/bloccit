@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe TopicsController, type: :controller do
 
     let(:my_topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
-    
+    let(:my_sponsor) { SponsoredPost.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, price: 19) }
+
     describe "GET Index" do
         it "returns http success" do
             get :index
@@ -18,18 +19,22 @@ RSpec.describe TopicsController, type: :controller do
     
     describe "GET show" do
         it "returns http success" do
-            get :show, {id: my_topic.id}
+            get :show, topic_id: my_topic.id, id: my_sponsor.id
             expect(response).to have_http_status(:success)
         end
     
         it "renders the #show view" do
-            get :show, {id: my_topic.id}
+            get :show, topic_id: my_topic.id, id: my_sponsor.id
             expect(response).to render_template :show
         end
         
         it "assigns my_topic to @topic" do
-            get :show, {id: my_topic.id}
+            get :show, topic_id: my_topic.id, id: my_sponsor.id
             expect(assigns(:topic)).to eq(my_topic)
+        end
+        it "assigns my_sponsor to @sponsored_post" do
+            get :show, topic_id: my_topic.id, id: my_sponsor.id
+            expect(assigns(:sponsored_post)).to eq(my_sponsor)
         end
     end
     
