@@ -4,4 +4,8 @@ module TopicsHelper
         current_user && current_user.admin?
     end
     
+    def user_is_authorized_edit_topics?
+        current_user && (current_user.admin? || current_user.moderator?)
+    end
+    
 end
