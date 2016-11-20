@@ -29,4 +29,8 @@ class User < ActiveRecord::Base
         gravatar_id = Digest::MD5::hexdigest(self.email).downcase
         "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
     end
+    
+    def favorite_for(post)
+        favorites.where(post_id: post.id).first
+    end
 end

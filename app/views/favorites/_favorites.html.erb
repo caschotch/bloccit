@@ -1,0 +1,11 @@
+<% @user.favorites.each do |favorite| %>
+  <div class='favorite_post'>
+    <div class='col-md-1'>
+      <%= image_tag favorite.post.user.avatar_url(48), class: 'gravatar' %>  
+    </div>  
+    
+    <div class='inline'>
+      <%= render partial: 'posts/post', locals: { post: favorite.post }%>
+    </div>  
+  </div>
+<% end %>
