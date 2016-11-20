@@ -1,0 +1,5 @@
+You are now following "<%= @post.title %>".
+
+<%= link_to "View this post.", topic_post_url(@post.topic, @post) %>
+
+If you do not want to recieve anymore email notifications, unfavorite <%= link_to "post", topic_post_url(@post.topic, @post) %>
